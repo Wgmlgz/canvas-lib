@@ -1,10 +1,8 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
-import { canvasInit } from './lib.ts'
-
-
+import './style.css';
+import typescriptLogo from './typescript.svg';
+import viteLogo from '/vite.svg';
+import { setupCounter } from './counter.ts';
+import { canvasInit } from './lib.ts';
 
 // setTimeout(async () => {
 //   // console.log(module)
@@ -16,8 +14,7 @@ import { canvasInit } from './lib.ts'
 //   })
 // })
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<canvas width="200" height="200 class="emscripten" id="canvas1" oncontextmenu="event.preventDefault()"></canvas>
-<canvas class="emscripten" id="canvas2" oncontextmenu="event.preventDefault()"></canvas>
+<canvas width="1000" height="1000" tabindex="1000" class="emscripten" id="canvas1" oncontextmenu="event.preventDefault()"></canvas>
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="${viteLogo}" class="logo" alt="Vite logo" />
@@ -33,12 +30,13 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       Click on the Vite and TypeScript logos to learn more
     </p>
   </div>
-`
-const c1 = await canvasInit('#canvas1')
-const c2 = await canvasInit('#canvas2')
+`;
+const c1 = await canvasInit('#canvas1');
 
-requestAnimationFrame(() => {
-  c1.render()
-  c2.render()
-})
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+const loop = () =>
+  requestAnimationFrame(() => {
+    c1.EventLoopCallback();
+    loop();
+  });
+loop();
+setupCounter(document.querySelector<HTMLButtonElement>('#counter')!);

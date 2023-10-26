@@ -106,12 +106,15 @@ function(add_sample_app APP_NAME IDE_FOLDER SOURCE INCLUDE SHADERS ASSETS)
 endfunction()
 
 set(INCLUDE
+  src/main.hpp
   src/lib.hpp
+  src/TexturedCube.hpp
 )
 
 set(SOURCE
   src/main.cpp
   src/lib.cpp
+  src/TexturedCube.cpp
 )
 
 set(SHADERS)

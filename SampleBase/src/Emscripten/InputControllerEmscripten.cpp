@@ -57,6 +57,7 @@ void InputControllerEmscripten::OnMouseWheel(float WheelDelta)
 
 void InputControllerEmscripten::ProcessKeyEvent(int32_t KeyCode, bool IsKeyPressed)
 {
+    printf("%d\n", KeyCode);
     auto UpdateKeyState = [&](InputKeys Key) {
         auto& KeyState = m_Keys[static_cast<size_t>(Key)];
         if (IsKeyPressed)
